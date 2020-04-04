@@ -1782,7 +1782,7 @@ static void qpnp_flash_led_brightness_set(struct led_classdev *led_cdev,
 		qpnp_flash_led_node_set(fnode, value);
 	}
 
-        if(!strcmp("led:switch_0",led_cdev->name) && !value)
+	if(!strcmp("led:switch_0",led_cdev->name) && !value)
 		if(NULL != led->flashlight_node)
 			led->flashlight_node->cdev.brightness = value;
 
@@ -1840,6 +1840,7 @@ static void qpnp_flashlight_led_brightness_set(struct led_classdev *led_cdev,
 				}
 			}
 	}
+
 	spin_unlock(&led->lock);
 }
 
@@ -2815,7 +2816,7 @@ static int qpnp_flash_led_probe(struct platform_device *pdev)
 	struct device_node *node, *temp;
 	const char *temp_string;
 	unsigned int base;
- 	int rc, i = 0, j = 0, k = 0;
+	int rc, i = 0, j = 0, k = 0;
 
 	node = pdev->dev.of_node;
 	if (!node) {
@@ -2891,7 +2892,7 @@ static int qpnp_flash_led_probe(struct platform_device *pdev)
 	if (!led->snode)
 		return -ENOMEM;
 
-        led->flashlight_node = devm_kcalloc(&pdev->dev, led->num_flashlight_nodes,
+	led->flashlight_node = devm_kcalloc(&pdev->dev, led->num_flashlight_nodes,
 				sizeof(*led->flashlight_node),
 			GFP_KERNEL);
 	if (!led->flashlight_node)
@@ -2943,6 +2944,17 @@ static int qpnp_flash_led_probe(struct platform_device *pdev)
 		}
 
 	}
+
+		if (!strcmp("flashlight", temp_string)) {
+			rc = qpnp_flashlight_led_parse_and_register(led,
+					&led->flashlight_node[k],temp);
+			if (rc < 0) {
+				pr_err("Unable to parse and register flashlight node, rc=%d\n",
+					rc);
+				goto error_switch_register;
+			}
+			k++;
+		}
 
 	/* setup irqs */
 	if (led->pdata->all_ramp_up_done_irq >= 0) {
