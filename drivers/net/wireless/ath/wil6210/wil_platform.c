@@ -20,12 +20,10 @@
 
 int __init wil_platform_modinit(void)
 {
-	return msm_11ad_modinit();
 }
 
 void wil_platform_modexit(void)
 {
-	msm_11ad_modexit();
 }
 
 /**
@@ -46,7 +44,7 @@ void *wil_platform_init(struct device *dev, struct wil_platform_ops *ops,
 		return NULL;
 	}
 
-	handle = msm_11ad_dev_init(dev, ops, rops, wil_handle);
+	handle = (dev, ops, rops, wil_handle);
 
 	return handle;
 }
