@@ -493,11 +493,7 @@ static const struct attribute_group attribute_group = {
 	.attrs = attributes,
 };
 
-static void notification_work(struct work_struct *work)
-{
-	mdss_prim_panel_fb_unblank(FP_UNLOCK_REJECTION_TIMEOUT);
-	printk("unblank\n");
- }
+static void notification_work(struct work_struct *work);
 
 static irqreturn_t fpc1020_irq_handler(int irq, void *handle)
 {

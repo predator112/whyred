@@ -542,12 +542,8 @@ static long gf_compat_ioctl(struct file *filp, unsigned int cmd, unsigned long a
 }
 #endif /*CONFIG_COMPAT*/
 
- static void notification_work(struct work_struct *work)
-{
-	printk("notification_work\n");
-	mdss_prim_panel_fb_unblank(FP_UNLOCK_REJECTION_TIMEOUT);
-	printk("unblank\n");
-}
+ static void notification_work(struct work_struct *work);
+
 
 static int gf_open(struct inode *inode, struct file *filp)
 {
