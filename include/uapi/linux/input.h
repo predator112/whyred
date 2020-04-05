@@ -124,6 +124,7 @@ struct input_mask {
 #define EVIOCGPHYS(len)		_IOC(_IOC_READ, 'E', 0x07, len)		/* get physical location */
 #define EVIOCGUNIQ(len)		_IOC(_IOC_READ, 'E', 0x08, len)		/* get unique identifier */
 #define EVIOCGPROP(len)		_IOC(_IOC_READ, 'E', 0x09, len)		/* get device properties */
+#define INPUT_PROP_NO_DUMMY_RELEASE	0x06	/* no dummy event */
 
 /**
  * EVIOCGMTSLOTS(len) - get MT slot values
