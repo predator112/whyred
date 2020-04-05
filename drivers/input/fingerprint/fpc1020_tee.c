@@ -726,7 +726,6 @@ static int fpc1020_probe(struct platform_device *pdev)
 	dev_info(dev, "%s: ok\n", __func__);
 	fpc1020->fb_black = false;
 	fpc1020->wait_finger_down = false;
-	INIT_WORK(&fpc1020->work, notification_work);
 	fpc1020->fb_notifier = fpc_notif_block;
 	fb_register_client(&fpc1020->fb_notifier);
 
