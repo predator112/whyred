@@ -849,6 +849,12 @@ config ARM64_DMA_USE_IOMMU
 	  which is made virtually contiguous via iommu.
 	  Enable if system contains IOMMU hardware.
 
+config KERNEL_CUSTOM_E7S
+    default n
+        bool "Custom for hardware E7S_pcb"
+	  help
+	         Custom for E7S_pcb.
+
 if ARM64_DMA_USE_IOMMU
 
 config ARM64_DMA_IOMMU_ALIGNMENT
