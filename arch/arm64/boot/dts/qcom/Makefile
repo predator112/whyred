@@ -423,38 +423,9 @@ dtb-$(CONFIG_ARCH_MDM9607) += mdm9607-cdp.dtb \
         mdm9607-mtp.dtb \
 	mdm9607-rcm.dtb \
 
-ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
-	dtbo-$(CONFIG_ARCH_SDM660) += \
-		sdm660-mtp-external-codec-overlay.dtbo \
-		sdm660-mtp-internal-codec-overlay.dtbo \
-		sdm660-cdp-external-codec-overlay.dtbo \
-		sdm660-cdp-internal-codec-overlay.dtbo \
-		sdm660-qrd-external-codec-overlay.dtbo \
-		sdm660-rcm-external-codec-overlay.dtbo \
-		sdm660-rcm-internal-codec-overlay.dtbo \
-		sda660-mtp-external-codec-overlay.dtbo \
-		sda660-cdp-external-codec-overlay.dtbo \
-		sda660-rcm-external-codec-overlay.dtbo
-
-sdm660-mtp-external-codec-overlay.dtbo-base := sdm660-pm660l.dtb
-
-sdm660-mtp-internal-codec-overlay.dtbo-base := sdm660-pm660l.dtb
-
-sdm660-cdp-external-codec-overlay.dtbo-base := sdm660-pm660l.dtb
-
-sdm660-cdp-internal-codec-overlay.dtbo-base := sdm660-pm660l.dtb
-
-sdm660-qrd-external-codec-overlay.dtbo-base := sdm660-pm660l.dtb
-
-sdm660-rcm-external-codec-overlay.dtbo-base := sdm660-pm660l.dtb
-
-sdm660-rcm-internal-codec-overlay.dtbo-base := sdm660-pm660l.dtb
-
-sda660-mtp-external-codec-overlay.dtbo-base := sda660-pm660l.dtb
-
-sda660-cdp-external-codec-overlay.dtbo-base := sda660-pm660l.dtb
-
-sda660-rcm-external-codec-overlay.dtbo-base := sda660-pm660l.dtb
+ifeq ($(CONFIG_KERNEL_CUSTOM_E7S),y)
+dtb-$(CONFIG_ARCH_SDM660) += sdm636-mtp_e7s.dtb \
+	sdm660-mtp.dtb
 else
 dtb-$(CONFIG_ARCH_SDM660) += sdm660-sim.dtb \
 	sdm660-internal-codec-cdp.dtb \
