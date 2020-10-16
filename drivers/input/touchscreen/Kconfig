@@ -1277,6 +1277,8 @@ config TOUCHSCREEN_SYNAPTICS_DSX
           If unsure, say N.
 
 source "drivers/input/touchscreen/synaptics_dsx/Kconfig"
+source "drivers/input/touchscreen/nvt_touch_e7s/Kconfig"
+source "drivers/input/touchscreen/synaptics_dsx_e7s/Kconfig"
 
 config TOUCHSCREEN_SYNAPTICS_TCM
 	bool "Synaptics TCM Touchscreen Driver"

@@ -72,8 +72,10 @@ obj-$(CONFIG_TOUCHSCREEN_STMFTS)	+= stmfts.o
 obj-$(CONFIG_TOUCHSCREEN_STMPE)		+= stmpe-ts.o
 obj-$(CONFIG_TOUCHSCREEN_SUN4I)		+= sun4i-ts.o
 obj-$(CONFIG_TOUCHSCREEN_SUR40)		+= sur40.o
-obj-$(CONFIG_TOUCHSCREEN_SURFACE3_SPI)	+= surface3_spi.o
+ifeq ($(CONFIG_KERNEL_CUSTOM_E7S),y)
+else
 obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX) += synaptics_dsx/
+endif
 obj-$(CONFIG_TOUCHSCREEN_TI_AM335X_TSC)	+= ti_am335x_tsc.o
 obj-$(CONFIG_TOUCHSCREEN_TOUCHIT213)	+= touchit213.o
 obj-$(CONFIG_TOUCHSCREEN_TOUCHRIGHT)	+= touchright.o
@@ -109,3 +111,12 @@ obj-$(CONFIG_TOUCHSCREEN_ST)		+= st/
 obj-$(CONFIG_TOUCHSCREEN_HIMAX_CHIPSET)	+= hxchipset/
 obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_TCM)	+= synaptics_tcm/
 obj-$(CONFIG_TOUCHSCREEN_RAYDIUM_CHIPSET)  += raydium_wt030/
+
+# HMI_L6653_A01
+obj-$(CONFIG_TOUCHSCREEN_SYNAPTICS_DSX_E7S)	+= synaptics_dsx_e7s/
+obj-$(CONFIG_TOUCHSCREEN_NVT_E7S) 	+= nvt_touch_e7s/
+obj-$(CONFIG_KERNEL_CUSTOM_E7S)	+= lct_tp_fm_info.o
+obj-$(CONFIG_KERNEL_CUSTOM_E7S)	+= lct_ctp_selftest.o
+obj-$(CONFIG_KERNEL_CUSTOM_E7S)	+= lct_ctp_upgrade.o
+obj-$(CONFIG_KERNEL_CUSTOM_E7S)	+= lct_if_ctp_upgrade.o
+obj-$(CONFIG_KERNEL_CUSTOM_E7S)	+= lct_tp_gesture.o
